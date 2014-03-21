@@ -10,15 +10,26 @@ class API::V1::ProductsController < ApplicationController
   end
 
   def create
-    respond_with Product.create(params[:product])
+    @product = Product.new(product_params)
+    if @product.save
+      respond_with @product
+    end
   end
 
   def update 
-    respond_with Product.find(params[:id]).update_attributes(params[:product])
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      respond_with @product
+    end
   end
 
   def destroy
     respond_with Product.destroy(params[:id])
+  end
+
+  private
+  def product_params
+    params.require(:product).permit(:name, :category, :price, :release_date)
   end
 
 end
