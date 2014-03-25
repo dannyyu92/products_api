@@ -40,3 +40,16 @@
   POST request example:<br />
   ./api/v1/products?product[name]=NAME&product[category]=CATEGORY&product[price]=1337&product[release_date]=1992-01-10
 </p>
+<hr>
+<h1>
+  Testing ESPN Mashery API here:
+</h1>
+<p>
+  <% @espn_info.each do |hash| %>
+    <% hash.each do |k, v| %>
+      <p>
+        <%= k %>: <%= v %>
+      </p>
+    <% end %>
+  <% end %>
+</p>

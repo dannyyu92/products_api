@@ -1,8 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  include EspnHelper
+
   def index
     @products = Product.all
+    @espn_info = headlines_grabber()
   end
 
   def show
